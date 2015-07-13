@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kkl.controller.base.BaseController;
-import com.kkl.service.system.appuser.AppuserService;
+import com.kkl.service.system.AppuserService;
 import com.kkl.util.AppUtil;
 import com.kkl.util.PageData;
 import com.kkl.util.Tools;

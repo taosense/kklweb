@@ -27,7 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kkl.controller.base.BaseController;
 import com.kkl.entity.Page;
-import com.kkl.service.information.pictures.PicturesService;
+import com.kkl.service.information.PicturesService;
 import com.kkl.util.AppUtil;
 import com.kkl.util.Const;
 import com.kkl.util.DateUtil;

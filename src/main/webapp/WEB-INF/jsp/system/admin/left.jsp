@@ -1,7 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
-<%
+﻿<%
 	String pathl = request.getContextPath();
 	String basePathl = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+pathl+"/";
 %>
@@ -42,23 +39,6 @@
 					</li>
 
 
-			
-				<li id="lm118">
-					<a style="cursor:pointer;" class="dropdown-toggle" >
-						<i class="${menu.MENU_ICON == null ? 'icon-desktop' : menu.MENU_ICON}"></i>
-						<span>用户</span>
-						<b class="arrow icon-angle-down"></b>
-					 </a>
-					 <ul class="submenu">
-		 				<li id="z121">
-						<a style="cursor:pointer;" target="mainFrame"  
-						onclick="siMenu('z1121','lm1181','用户','to.do')">
-						<i class="icon-double-angle-right"></i>用户</a></li>
-						<li>
-						<a href="javascript:void(0);">
-						<i class="icon-double-angle-right"></i>用户</a></li>
-					 </ul>
-				</li>
 
 			<c:forEach items="${menuList}" var="menu">
 				<c:if test="${menu.hasMenu}">

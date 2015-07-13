@@ -16,8 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kkl.controller.base.BaseController;
 import com.kkl.entity.Page;
-import com.kkl.service.system.dictionaries.DictionariesService;
-import com.kkl.service.system.menu.MenuService;
+import com.kkl.service.system.DictionariesService;
+import com.kkl.service.system.MenuService;
 import com.kkl.util.AppUtil;
 import com.kkl.util.PageData;
 /** 

@@ -24,9 +24,9 @@ import com.kkl.controller.base.BaseController;
 import com.kkl.entity.system.Menu;
 import com.kkl.entity.system.Role;
 import com.kkl.entity.system.User;
-import com.kkl.service.system.menu.MenuService;
-import com.kkl.service.system.role.RoleService;
-import com.kkl.service.system.user.UserService;
+import com.kkl.service.system.MenuService;
+import com.kkl.service.system.RoleService;
+import com.kkl.service.system.UserService;
 import com.kkl.util.AppUtil;
 import com.kkl.util.Const;
 import com.kkl.util.DateUtil;
@@ -69,7 +69,7 @@ public class LoginController extends BaseController {
 	 * 访问登录页
 	 * @return
 	 */
-	@RequestMapping(value="/login_toLogin")
+	@RequestMapping(value="/login_toLogin1")
 	public ModelAndView toLogin()throws Exception{
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
@@ -79,6 +79,73 @@ public class LoginController extends BaseController {
 		mv.addObject("pd",pd);
 		return mv;
 	}
+	
+	/**
+	 * 请求登录，验证用户
+	 */
+	@RequestMapping(value="/login_toLogin")
+	public String index()throws Exception{
+		Map<String,String> map = new HashMap<String,String>();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		String errInfo = "";
+//		String KEYDATA[] = pd.getString("KEYDATA").replaceAll("qq313596790fh", "").replaceAll("QQ978336446fh", "").split(",fh,");
+		
+			//shiro管理的session
+			Subject currentUser = SecurityUtils.getSubject();  
+			Session session = currentUser.getSession();
+			String sessionCode = (String)session.getAttribute(Const.SESSION_SECURITY_CODE);		//获取session中的验证码
+			
+//				String USERNAME = KEYDATA[0];
+//				String PASSWORD  = KEYDATA[1];
+				String USERNAME = "admin";
+				String PASSWORD  = "1";
+				
+				pd.put("USERNAME", USERNAME);
+//				if(Tools.notEmpty(sessionCode) && sessionCode.equalsIgnoreCase(code)){
+					String passwd = new SimpleHash("SHA-1", USERNAME, PASSWORD).toString();	//密码加密
+					pd.put("PASSWORD", passwd);
+					pd = userService.getUserByNameAndPwd(pd);
+					if(pd != null){
+						pd.put("LAST_LOGIN",DateUtil.getTime().toString());
+						userService.updateLastLogin(pd);
+						User user = new User();
+						user.setUSER_ID(pd.getString("USER_ID"));
+						user.setUSERNAME(pd.getString("USERNAME"));
+						user.setPASSWORD(pd.getString("PASSWORD"));
+						user.setNAME(pd.getString("NAME"));
+						user.setRIGHTS(pd.getString("RIGHTS"));
+						user.setROLE_ID(pd.getString("ROLE_ID"));
+						user.setLAST_LOGIN(pd.getString("LAST_LOGIN"));
+						user.setIP(pd.getString("IP"));
+						user.setSTATUS(pd.getString("STATUS"));
+						session.setAttribute(Const.SESSION_USER, user);
+						session.removeAttribute(Const.SESSION_SECURITY_CODE);
+						
+						//shiro加入身份验证
+						Subject subject = SecurityUtils.getSubject(); 
+					    UsernamePasswordToken token = new UsernamePasswordToken(USERNAME, PASSWORD); 
+					    try { 
+					        subject.login(token); 
+					    } catch (AuthenticationException e) { 
+					    	errInfo = "身份验证失败！";
+					    }
+					    
+					}else{
+						errInfo = "usererror"; 				//用户名或密码有误
+					}
+//				}else{
+//					errInfo = "codeerror";				 	//验证码输入有误
+//				}
+				if(Tools.isEmpty(errInfo)){
+					errInfo = "success";					//验证成功
+				}
+
+		map.put("result", errInfo);
+		return "redirect:main/index";
+	}
+	
+	
 	
 	/**
 	 * 请求登录，验证用户

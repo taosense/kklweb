@@ -32,9 +32,9 @@
 				<!--/page-header-->
 
 				<div class="row-fluid">
-
+                                                      <h1>欢迎进入系统</h1>
 					<div class="space-6"></div>
-					<div class="row-fluid">
+					<%-- <div class="row-fluid">
 						<%
 							String strXML = "";
 
@@ -268,7 +268,7 @@
 
 
 
-					</div>
+					</div> --%>
 				</div>
 				<!--/row-->
 
