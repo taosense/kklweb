@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kkl.controller.base.BaseController;
-import com.kkl.service.system.appuser.AppuserService;
-import com.kkl.service.system.user.UserService;
+import com.kkl.service.system.AppuserService;
+import com.kkl.service.system.UserService;
 import com.kkl.util.AppUtil;
 import com.kkl.util.Const;
 import com.kkl.util.PageData;

@@ -1,8 +1,9 @@
 package com.kkl.util;
 
-import com.kkl.service.system.menu.MenuService;
-import com.kkl.service.system.role.RoleService;
-import com.kkl.service.system.user.UserService;
+import com.kkl.service.system.MenuService;
+import com.kkl.service.system.RoleService;
+import com.kkl.service.system.UserService;
+
 
 
 
