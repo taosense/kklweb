@@ -9,7 +9,7 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java-version>1.8</java-version>
+		<java-version>1.7</java-version>
         <junit.version>4.12</junit.version>
         <mybatis.version>3.2.8</mybatis.version>
         <mariadb.driver.verison>1.1.8</mariadb.driver.verison>
