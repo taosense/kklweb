@@ -437,7 +437,7 @@
             <scope>system</scope> 
             <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/weixinapi.jar</systemPath> 
         </dependency>
-        <!-- weixin -->
+        <!-- qrcode -->
         <dependency> 
             <groupId>org.qrcode</groupId>
             <artifactId>qrcode</artifactId>
@@ -445,6 +445,15 @@
             <scope>system</scope> 
             <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/QRCode.jar</systemPath> 
         </dependency>
+        <!-- fchelper -->
+        <dependency> 
+            <groupId>org.fchelper</groupId>
+            <artifactId>fchelper</artifactId>
+            <version>1.0.0</version> 
+            <scope>system</scope> 
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/fchelper.jar</systemPath> 
+        </dependency>
+        
 		      <!--  end me -->
 	</dependencies>
 	<build>
